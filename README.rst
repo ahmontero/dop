@@ -9,11 +9,10 @@ Features
 
 Full support for all methods listed `here`_ except (they have weird behaviour):
     reset_root_password
-    restore
+    restore_droplet
     destroy_image
 
-Experimental support for ssh. Digital Ocean does not have full support for ssh creation, edit and deletion of ssh keys. This wrapper will be updated when they change it.
-
+Support for ssh is still experimental. Digital Ocean does not have full support for adding ssh keys neither edit them yet.
 
 Installation
 ------------

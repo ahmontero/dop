@@ -278,7 +278,7 @@ class Client(object):
         return json.get('event_id', None)
 
     # WEIRD BEHAVIOUR METHODS
-    def reset_root_password_droplet(self, id):
+    def reset_root_password(self, id):
         params = {}
         json = self.request('/droplets/%s/reset_root_password' % (id),
             method='GET', params=params)
@@ -302,7 +302,6 @@ class Client(object):
         event = json.get('event', None)
         return event
 
-    # EXPERIMENTAL: ssh actions #
     def show_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_keys/%s' % (id), method='GET', params=params)
@@ -310,6 +309,14 @@ class Client(object):
         ssh_key = SSHKey.from_json(ssh_key_json)
         return ssh_key
 
+    def destroy_ssh_key(self, id):
+        params = {}
+        json = self.request('/ssh_keys/%s/destroy' % (id), method='GET',
+            params=params)
+        ssh_key = SSHKey.from_json(json)
+        return ssh_key
+
+    # EXPERIMENTAL: ssh actions #
     def add_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_key/%s/add' % (id), method='GET',
@@ -322,13 +329,6 @@ class Client(object):
     def edit_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_key/%s/edit' % (id), method='GET',
-            params=params)
-        ssh_key = SSHKey.from_json(json)
-        return ssh_key
-
-    def destroy_ssh_key(self, id):
-        params = {}
-        json = self.request('/ssh_keys/%s/destroy' % (id), method='GET',
             params=params)
         ssh_key = SSHKey.from_json(json)
         return ssh_key
