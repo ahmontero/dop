@@ -354,7 +354,7 @@ class Client(object):
 
         if response.status_code == 200:
             if response.json:
-                json = response.json
+                json = response.json()
                 error_msg = json.get('error_message', None)
                 if error_msg:
                     raise DOPException(error_msg)
@@ -365,6 +365,7 @@ class Client(object):
         else:
             error = 'Status code: %d' % (response.status_code)
             raise DOPException(error)
+
         return json
 
     def get_url(self, slug):
