@@ -353,8 +353,8 @@ class Client(object):
             response = requests.get(url, headers=headers, params=params)
 
         if response.status_code == 200:
-            if response.json:
-                json = response.json
+            if response.json():
+                json = response.json()
                 error_msg = json.get('error_message', None)
                 if error_msg:
                     raise DOPException(error_msg)

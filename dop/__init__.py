@@ -20,8 +20,8 @@ usage:
 """
 
 __title__ = 'dop'
-__version__ = '01.2'
-__build__ = 0x000102
+__version__ = '01.3'
+__build__ = 0x000103
 __author__ = 'Antonio Hinojo'
 __license__ = 'MIT'
 
