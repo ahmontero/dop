@@ -18,7 +18,7 @@ API_PORT = 80
 
 class Droplet(object):
     def __init__(self, id, name, size_id, image_id, region_id, event_id,
-        backups_active, status):
+        backups_active, status, ip_address):
         self.id = id
         self.name = name
         self.size_id = size_id
@@ -27,6 +27,7 @@ class Droplet(object):
         self.event_id = event_id
         self.backups_active = backups_active
         self.status = status
+        self.ip_address = ip_address
 
     def to_json(self):
         return self.__dict__
@@ -41,8 +42,9 @@ class Droplet(object):
         event_id = json.get('event_id', -1)
         backups_active = json.get('backups_active', -1)
         status = json.get('status', '')
+        ip_address = json.get('ip_address', -1)
         droplet = Droplet(id, name, size_id, image_id, region_id, event_id,
-            backups_active, status)
+            backups_active, status, ip_address)
         return droplet
 
 
