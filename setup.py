@@ -17,7 +17,7 @@ setup(
     description="A Python client for the Digital Ocean API",
     packages=["dop"],
     install_requires=[
-        'requests >= 1.0.0',
+        'requests',
     ],
     classifiers=(
         'Development Status :: 4 - Beta',
