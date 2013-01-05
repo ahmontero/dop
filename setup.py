@@ -16,9 +16,7 @@ setup(
     url="http://github.com/ahmontero/dop",
     description="A Python client for the Digital Ocean API",
     packages=["dop"],
-    install_requires=[
-        'requests',
-    ],
+    install_requires = ["requests>=1.0.4"],
     classifiers=(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

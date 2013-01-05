@@ -24,5 +24,3 @@ __version__ = '0.1.4'
 __build__ = 0x000104
 __author__ = 'Antonio Hinojo'
 __license__ = 'MIT'
-
-from .client import Client, Droplet, Snapshot, Region, Image, Size, SSHKey
