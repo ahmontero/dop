@@ -4,3 +4,9 @@ Development Lead
 ````````````````
 
 - Antonio Hinojo <hello@ahmontero.com>
+
+Contributors
+````````````
+
+- Luke <http://github.com/clone1018>
+- Derek <https://github.com/covertgeek>

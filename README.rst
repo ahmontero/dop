@@ -12,8 +12,6 @@ Full support for all methods listed `here`_ except (they have weird behaviour):
     - restore_droplet
     - destroy_image
 
-Support for ssh is still experimental. Digital Ocean does not have full support for adding ssh keys neither edit them yet.
-
 Installation
 ------------
 
