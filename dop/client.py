@@ -113,9 +113,9 @@ class Size(object):
 
 
 class SSHKey(object):
-    def __init__(self, id, key):
+    def __init__(self, id, name):
         self.id = id
-        self.key = key
+        self.name = name
 
     def to_json(self):
         return self.__dict__
@@ -123,8 +123,8 @@ class SSHKey(object):
     @staticmethod
     def from_json(json):
         id = json.get('id', -1)
-        key = json.get('key', '')
-        ssh_key = SSHKey(id, key)
+        name = json.get('name', '')
+        ssh_key = SSHKey(id, name)
         return ssh_key
 
 
@@ -175,8 +175,8 @@ class Client(object):
         params = {}
         json = self.request('/ssh_keys', method='GET', params=params)
         ssh_keys_json = json.get('ssh_keys', [])
-        sizes = [Size.from_json(k) for k in ssh_keys_json]
-        return sizes
+        keys = [SSHKey.from_json(k) for k in ssh_keys_json]
+        return keys
 
     def reboot_droplet(self, id):
         params = {}
