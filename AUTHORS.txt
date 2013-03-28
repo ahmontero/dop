@@ -10,3 +10,6 @@ Contributors
 
 - Luke <http://github.com/clone1018>
 - Derek <https://github.com/covertgeek>
+- Dsegonds <https://github.com/dsegonds>
+- Yulli <https://github.com/Yulli>
+- samuelclay <https://github.com/samuelclay>
