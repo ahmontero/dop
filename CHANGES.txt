@@ -1,3 +1,8 @@
+Version 0.1.4
+    + Added virtio parameter to create_droplet method
+    + Minor fixes in all_ssh_keys method
+    + Readme region example now uses to_json() method
+
 Version 0.1.3
     + Added ssh_keys support to Droplet object (thanks to Derek: http://github.com/covertgeek)
 
