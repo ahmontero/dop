@@ -171,7 +171,7 @@ class Client(object):
         sizes = [Size.from_json(s) for s in sizes_json]
         return sizes
 
-    def all_ssh_keys(self):
+    def ssh_keys(self):
         params = {}
         json = self.request('/ssh_keys', method='GET', params=params)
         ssh_keys_json = json.get('ssh_keys', [])
