@@ -152,12 +152,12 @@ class Client(object):
         regions = [Region.from_json(r) for r in regions_json]
         return regions
 
-    def images(self, show_all=True):
+    def images(self, my_images=False):
         params = {}
-        if show_all:
-            params['filter'] = 'global'
-        else:
+        if my_images:
             params['filter'] = 'my_images'
+        else:
+            params['filter'] = 'global'
 
         json = self.request('/images', method='GET', params=params)
         images_json = json.get('images', [])
