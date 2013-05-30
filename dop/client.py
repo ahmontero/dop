@@ -289,7 +289,7 @@ class Client(object):
         params = {}
         json = self.request('/droplets/%s/reset_root_password' % (id),
             method='GET', params=params)
-        print json
+        print(json)
         return json.get('event_id', None)
 
     def restore_droplet(self, id, image_id):
@@ -298,14 +298,14 @@ class Client(object):
         }
         json = self.request('/droplets/%s/restore' % (id), method='GET',
             params=params)
-        print json
+        print(json)
         return json.get('event_id', None)
 
     def destroy_image(self, image_id):
         params = {}
         json = self.request('/images/%s/destroy' % (image_id), method='GET',
             params=params)
-        print json
+        print(json)
         event = json.get('event', None)
         return event
 
@@ -328,7 +328,7 @@ class Client(object):
         params = {}
         json = self.request('/ssh_key/%s/add' % (id), method='GET',
             params=params)
-        print json
+        print(json)
         ssh_key_json = json.get('ssh_key', None)
         ssh_key = SSHKey.from_json(ssh_key_json)
         return ssh_key

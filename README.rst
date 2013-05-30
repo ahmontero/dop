@@ -29,7 +29,7 @@ It is pretty easy to use: ::
     client = Client('client_id', 'api_key')
     regions = client.regions()
     for region in regions:
-        print region.to_json()
+        print(region.to_json())
 
 
 
