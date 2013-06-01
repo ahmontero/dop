@@ -234,7 +234,7 @@ class Client(object):
         }
         json = self.request('/droplets/%s/resize' % (id), method='POST',
                             params=params)
-        return json
+        return json.get('event_id', None)
 
     def snapshot_droplet(self, id, name):
         params = {
