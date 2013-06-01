@@ -47,6 +47,20 @@ class Droplet(object):
                           backups_active, status, ip_address)
         return droplet
 
+class Status(object):
+    def __init__(self, action_status, percentage):
+        self.action_status = action_status
+        self.percentage = percentage
+
+    def to_json(self):
+        return self.__dict__
+
+    @staticmethod
+    def from_json(json):
+        action_status = json.get('action_status', '')
+        percentage = json.get('percentage', -1)
+        status = Status(action_status, percentage)
+        return status
 
 class Snapshot(object):
     def __init__(self, name):
@@ -285,6 +299,14 @@ class Client(object):
         json = self.request('/droplets/%s/shutdown' % (id), method='POST',
                             params=params)
         return json.get('event_id', None)
+
+    def get_status(self, event_id):
+        params = {}
+        json = self.request('/events/%s' % (event_id), method='GET',
+                            params=params)
+        status_json = json.get('event', None)
+        status = Status.from_json(status_json)
+        return status
 
     # WEIRD BEHAVIOUR METHODS
     def reset_root_password(self, id):
