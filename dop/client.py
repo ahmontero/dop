@@ -250,7 +250,7 @@ class Client(object):
         }
         json = self.request('/droplets/%s/rebuild' % (id), method='POST',
                             params=params)
-        return json.get('eveant_id', None)
+        return json.get('event_id', None)
 
     def enable_backups_droplet(self, id):
         params = {}
