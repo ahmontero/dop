@@ -18,7 +18,7 @@ API_PORT = 80
 
 class Droplet(object):
     def __init__(self, id, name, size_id, image_id, region_id, event_id,
-        backups_active, status, ip_address):
+                 backups_active, status, ip_address):
         self.id = id
         self.name = name
         self.size_id = size_id
@@ -44,9 +44,23 @@ class Droplet(object):
         status = json.get('status', '')
         ip_address = json.get('ip_address', -1)
         droplet = Droplet(id, name, size_id, image_id, region_id, event_id,
-            backups_active, status, ip_address)
+                          backups_active, status, ip_address)
         return droplet
 
+class Status(object):
+    def __init__(self, action_status, percentage):
+        self.action_status = action_status
+        self.percentage = percentage
+
+    def to_json(self):
+        return self.__dict__
+
+    @staticmethod
+    def from_json(json):
+        action_status = json.get('action_status', '')
+        percentage = json.get('percentage', -1)
+        status = Status(action_status, percentage)
+        return status
 
 class Snapshot(object):
     def __init__(self, name):
@@ -131,7 +145,7 @@ class SSHKey(object):
 class Client(object):
 
     def __init__(self, client_id, api_key, host=API_HOST, port=API_PORT,
-        secure=True):
+                 secure=True):
         self.client_id = client_id
         self.api_key = api_key
         self.host = host
@@ -152,12 +166,12 @@ class Client(object):
         regions = [Region.from_json(r) for r in regions_json]
         return regions
 
-    def images(self, show_all=True):
+    def images(self, my_images=False):
         params = {}
-        if show_all:
-            params['filter'] = 'global'
-        else:
+        if my_images:
             params['filter'] = 'my_images'
+        else:
+            params['filter'] = 'global'
 
         json = self.request('/images', method='GET', params=params)
         images_json = json.get('images', [])
@@ -171,7 +185,7 @@ class Client(object):
         sizes = [Size.from_json(s) for s in sizes_json]
         return sizes
 
-    def all_ssh_keys(self):
+    def ssh_keys(self):
         params = {}
         json = self.request('/ssh_keys', method='GET', params=params)
         ssh_keys_json = json.get('ssh_keys', [])
@@ -186,12 +200,14 @@ class Client(object):
 
     def show_droplet(self, id):
         params = {}
-        json = self.request('/droplets/%s' % (id), method='GET', params=params)
+        json = self.request('/droplets/%s' % (id), method='GET',
+                            params=params)
         droplet_json = json.get('droplet', None)
         droplet = Droplet.from_json(droplet_json)
         return droplet
 
-    def create_droplet(self, name="", size_id=-1, image_id=-1, region_id=-1, ssh_key_ids = None, virtio=False):
+    def create_droplet(self, name="", size_id=-1, image_id=-1,
+                       region_id=-1, ssh_key_ids=None, virtio=False):
         params = {
             'name': name,
             'size_id': size_id,
@@ -210,20 +226,20 @@ class Client(object):
 
     def power_cycle_droplet(self, id):
         params = {}
-        json = self.request('/droplets/%s/power_cycle' % (id), method='POST',
-            params=params)
+        json = self.request('/droplets/%s/power_cycle' % (id),
+                            method='POST', params=params)
         return json.get('event_id', None)
 
     def power_off_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/power_off' % (id), method='GET',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
 
     def power_on_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/power_on' % (id), method='GET',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
 
     def resize_droplet(self, id, size_id):
@@ -231,15 +247,15 @@ class Client(object):
             'size_id': size_id,
         }
         json = self.request('/droplets/%s/resize' % (id), method='POST',
-            params=params)
-        return json
+                            params=params)
+        return json.get('event_id', None)
 
     def snapshot_droplet(self, id, name):
         params = {
             'name': name,
         }
         json = self.request('/droplets/%s/snapshot' % (id), method='POST',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
 
     def rebuild_droplet(self, id, image_id):
@@ -247,25 +263,25 @@ class Client(object):
             'image_id': image_id,
         }
         json = self.request('/droplets/%s/rebuild' % (id), method='POST',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
 
     def enable_backups_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/enable_backups' % (id),
-            method='POST', params=params)
+                            method='POST', params=params)
         return json.get('event_id', None)
 
     def disable_backups_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/disable_backups' % (id),
-            method='POST', params=params)
+                            method='POST', params=params)
         return json.get('event_id', None)
 
     def destroy_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/destroy' % (id), method='POST',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
 
     def show_image(self, image_id):
@@ -273,7 +289,7 @@ class Client(object):
             'image_id': image_id,
         }
         json = self.request('/images/%s' % (image_id), method='GET',
-            params=params)
+                            params=params)
         image_json = json.get('image', None)
         image = Image.from_json(image_json)
         return image
@@ -281,15 +297,23 @@ class Client(object):
     def shutdown_droplet(self, id):
         params = {}
         json = self.request('/droplets/%s/shutdown' % (id), method='POST',
-            params=params)
+                            params=params)
         return json.get('event_id', None)
+
+    def get_status(self, event_id):
+        params = {}
+        json = self.request('/events/%s' % (event_id), method='GET',
+                            params=params)
+        status_json = json.get('event', None)
+        status = Status.from_json(status_json)
+        return status
 
     # WEIRD BEHAVIOUR METHODS
     def reset_root_password(self, id):
         params = {}
         json = self.request('/droplets/%s/reset_root_password' % (id),
-            method='GET', params=params)
-        print json
+                            method='GET', params=params)
+        print(json)
         return json.get('event_id', None)
 
     def restore_droplet(self, id, image_id):
@@ -297,21 +321,22 @@ class Client(object):
             'image_id': image_id,
         }
         json = self.request('/droplets/%s/restore' % (id), method='GET',
-            params=params)
-        print json
+                            params=params)
+        print(json)
         return json.get('event_id', None)
 
     def destroy_image(self, image_id):
         params = {}
         json = self.request('/images/%s/destroy' % (image_id), method='GET',
-            params=params)
-        print json
+                            params=params)
+        print(json)
         event = json.get('event', None)
         return event
 
     def show_ssh_key(self, id):
         params = {}
-        json = self.request('/ssh_keys/%s' % (id), method='GET', params=params)
+        json = self.request('/ssh_keys/%s' % (id), method='GET',
+                            params=params)
         ssh_key_json = json.get('ssh_key', None)
         ssh_key = SSHKey.from_json(ssh_key_json)
         return ssh_key
@@ -319,7 +344,7 @@ class Client(object):
     def destroy_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_keys/%s/destroy' % (id), method='GET',
-            params=params)
+                            params=params)
         ssh_key = SSHKey.from_json(json)
         return ssh_key
 
@@ -327,8 +352,8 @@ class Client(object):
     def add_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_key/%s/add' % (id), method='GET',
-            params=params)
-        print json
+                            params=params)
+        print(json)
         ssh_key_json = json.get('ssh_key', None)
         ssh_key = SSHKey.from_json(ssh_key_json)
         return ssh_key
@@ -336,7 +361,7 @@ class Client(object):
     def edit_ssh_key(self, id):
         params = {}
         json = self.request('/ssh_key/%s/edit' % (id), method='GET',
-            params=params)
+                            params=params)
         ssh_key = SSHKey.from_json(json)
         return ssh_key
 

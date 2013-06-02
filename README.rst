@@ -22,15 +22,21 @@ To install dop, simply: ::
 
 Example
 -------
-It is pretty easy to use: ::
+It is pretty easy to use:
+
+.. code-block:: python
 
     from dop.client import Client
 
     client = Client('client_id', 'api_key')
+    
+    # Print regions.
     regions = client.regions()
     for region in regions:
-        print region.to_json()
-
+        print(region.to_json())
+    
+    # Create a 512Mb droplet (Debian 7.0 x32) in the Amsterdam region.
+    client.create_droplet(name='test', size_id=66, image_id=303619, region_id=2)
 
 
 Contribute
