@@ -264,7 +264,7 @@ class Client(object):
 
     def destroy_droplet(self, id):
         params = {}
-        json = self.request('/droplets/%s/destroy' % (id), method='POST',
+        json = self.request('/droplets/%s/destroy' % (id), method='GET',
             params=params)
         return json.get('event_id', None)
 
