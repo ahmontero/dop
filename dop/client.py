@@ -193,7 +193,7 @@ class Client(object):
         droplet = Droplet.from_json(droplet_json)
         return droplet
 
-    def create_droplet(self, name="", size_id=-1, image_id=-1, region_id=-1, ssh_key_ids = None, virtio=False):
+    def create_droplet(self, name="", size_id=-1, image_id=-1, region_id=-1, ssh_key_ids = None, virtio=False, private_networking=False):
         params = {
             'name': name,
             'size_id': size_id,
@@ -204,6 +204,8 @@ class Client(object):
             params['ssh_key_ids'] = ','.join(ssh_key_ids)
         if virtio:
             params['virtio'] = 1
+        if private_networking:
+            params['private_networking']= 1
         
         json = self.request('/droplets/new', method='GET', params=params)
         droplet_json = json.get('droplet', None)
