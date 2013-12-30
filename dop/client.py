@@ -265,8 +265,12 @@ class Client(object):
             method='POST', params=params)
         return json.get('event_id', None)
 
-    def destroy_droplet(self, id):
+    def destroy_droplet(self, id, scrub_data=False):
         params = {}
+
+        if scrub_data:
+            params['scrub_data'] = True
+
         json = self.request('/droplets/%s/destroy' % (id), method='GET',
             params=params)
         return json.get('event_id', None)
