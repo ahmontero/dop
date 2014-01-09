@@ -13,3 +13,4 @@ Contributors
 - Dsegonds <https://github.com/dsegonds>
 - Yulli <https://github.com/Yulli>
 - samuelclay <https://github.com/samuelclay>
+- Cleber J Santos <https://github.com/cleberjsantos>
