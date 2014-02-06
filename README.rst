@@ -38,3 +38,9 @@ Contribute
 Pull requests and improvements are welcome.
 
 .. _`here`: https://www.digitalocean.com/api
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/ahmontero/dop/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
