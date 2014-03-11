@@ -382,7 +382,8 @@ class Client(object):
             else:
                 raise DOPException('Empty json!')
         else:
-            error = 'Status code: %d' % (response.status_code)
+            error = ('Status code: %d, full response: %s' % 
+                    (response.status_code, response.json()))
             raise DOPException(error)
         return json
 
