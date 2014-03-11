@@ -1,3 +1,6 @@
+Version 0.1.6
+    + Python 3 compatibility thanks to Sambodson (https://github.com/samdobson)
+
 Version 0.1.5
     + Updated API
 
