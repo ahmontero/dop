@@ -20,7 +20,7 @@ setup(
     package_data={'': ['LICENSE.txt']},
     package_dir={'dop': 'dop'},
     include_package_data=True,
-    install_requires = ["requests >= 1.0.4"],
+    install_requires=["requests >= 1.0.4"],
     license=open('LICENSE.txt').read(),
     zip_safe=False,
     classifiers=(
