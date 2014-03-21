@@ -1,17 +1,34 @@
-This software is written and maintained by Antonio Hinojo:
+This software is written and maintained by Antonio H Montero:
 
 Development Lead
 ````````````````
 
-- Antonio Hinojo <hello@ahmontero.com>
+- Antonio H Montero <https://github.com/ahmontero>
 
 Contributors
 ````````````
+Alphabetical order:
 
-- Luke <http://github.com/clone1018>
+- alex-sf <https://github.com/alex-sf>
+- cleberjsantos <https://github.com/cleberjsantos>
+- covertgeek <https://github.com/covertgeek>
 - Derek <https://github.com/covertgeek>
 - Dsegonds <https://github.com/dsegonds>
-- Yulli <https://github.com/Yulli>
-- samuelclay <https://github.com/samuelclay>
-- Cleber J Santos <https://github.com/cleberjsantos>
+- joshpurvis <https://github.com/joshpurvis>
+- justinkim <https://github.com/justinkim>
+- Luke <http://github.com/clone1018>
+- quickdry21 <https://github.com/quickdry21>
 - samdobson <https://github.com/samdobson>
+- samuelclay <https://github.com/samuelclay>
+- volkhin <https://github.com/volkhin>
+- Yulli <https://github.com/Yulli>
+
+
+
+
+
+
+
+
+
+

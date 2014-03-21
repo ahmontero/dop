@@ -13,7 +13,7 @@ setup(
     description="A Python client for the Digital Ocean API",
     long_description=open('README.rst').read() + '\n\n' +
                      open('CHANGES.txt').read(),
-    author="Antonio Hinojo",
+    author="Antonio H Montero",
     author_email="hello@ahmontero.com",
     url="http://github.com/ahmontero/dop",
     packages=['dop'],

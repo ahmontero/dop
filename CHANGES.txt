@@ -1,3 +1,8 @@
+Version 1.6.b1
+    + Updated code to support full api
+    + Improved comments for methods
+    + Some refactor
+
 Version 0.1.6
     + Python 3 compatibility thanks to Sambodson (https://github.com/samdobson)
 

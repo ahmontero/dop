@@ -4,8 +4,7 @@
 Digital Ocean's API Wrapper
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Requests is an HTTP library, written in Python, for human beings. Basic GET
-usage:
+Basic usage:
 
    >>> from dop.client import Client
    >>> c = Client('client_id', 'api_key')
@@ -20,6 +19,6 @@ usage:
 """
 
 __title__ = 'dop'
-__version__ = '0.1.6'
+__version__ = '1.6.b1'
 __author__ = 'Antonio H Montero'
 __license__ = 'MIT'
