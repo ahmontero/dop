@@ -18,7 +18,9 @@ Basic usage:
 
 """
 
+from pkg_resources import get_distribution
+
 __title__ = 'dop'
-__version__ = '1.6.b1'
+__version__ = get_distribution('dop').version
 __author__ = 'Antonio H Montero'
 __license__ = 'MIT'
