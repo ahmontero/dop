@@ -11,8 +11,7 @@ This module implements the Digital Ocean API.
 """
 
 import requests
-
-import __version__
+from pkg_resources import get_distribution
 
 API_HOST = 'api.digitalocean.com'
 API_PORT = 80
@@ -219,6 +218,20 @@ class Client(object):
         self.host = host
         self.port = port
         self.secure = secure
+
+    def droplets(self):
+        """
+        This method returns the list of droplets
+        """
+        json = self.request('/droplets/', method='GET')
+        status = json.get('status')
+        if status == 'OK':
+            droplet_json = json.get('droplets', [])
+            droplets = [Droplet.from_json(droplet) for droplet in droplet_json]
+            return droplets
+        else:
+            message = json.get('message', None)
+            raise DOPException('[%s]: %s' % (status, message))
 
     def create_droplet(self, name=None, size=None, image=None, region=None,
                        ssh_key_ids=None, virtio=False, private_networking=False,
@@ -1068,7 +1081,7 @@ class Client(object):
             "Only 'GET' or 'POST' are allowed."
 
         headers = {
-            'User-Agent': 'dop/client v.%s' % __version__
+            'User-Agent': 'dop/client v.%s' % get_distribution("dop").version
         }
 
         params['client_id'] = self.client_id
