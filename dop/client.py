@@ -154,7 +154,7 @@ class Client(object):
         """
         if not droplet_id:
             raise DOPException('droplet_id is required to reboot a droplet!')
-        json = self.request('/droplets/%s/reboot' % droplet_id, method='POST')
+        json = self.request('/droplets/%s/reboot' % droplet_id, method='GET')
         status = json.get('status')
         if status == 'OK':
             return json.get('event_id')
@@ -170,7 +170,7 @@ class Client(object):
         if not droplet_id:
             msg = 'droplet_id is required to power cycle a droplet!'
             raise DOPException(msg)
-        json = self.request('/droplets/%s/power_cycle' % droplet_id, method='POST')
+        json = self.request('/droplets/%s/power_cycle' % droplet_id, method='GET')
         status = json.get('status')
         if status == 'OK':
             return json.get('event_id')
@@ -186,7 +186,7 @@ class Client(object):
         if not droplet_id:
             msg = 'droplet_id is required to shutdown a droplet!'
             raise DOPException(msg)
-        json = self.request('/droplets/%s/shutdown' % droplet_id, method='POST')
+        json = self.request('/droplets/%s/shutdown' % droplet_id, method='GET')
         status = json.get('status')
         if status == 'OK':
             return json.get('event_id')
@@ -270,7 +270,7 @@ class Client(object):
                 msg = 'size_id or size_slug are required to resize a droplet!'
                 raise DOPException(msg)
 
-        json = self.request('/droplets/%s/resize' % droplet_id, method='POST',
+        json = self.request('/droplets/%s/resize' % droplet_id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -299,7 +299,7 @@ class Client(object):
         if not droplet_id:
             raise DOPException('droplet_id is required to snapshot a droplet!')
         params = {'name': name}
-        json = self.request('/droplets/%s/snapshot' % id, method='POST',
+        json = self.request('/droplets/%s/snapshot' % id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -359,7 +359,7 @@ class Client(object):
         params = {
             'image_id': image_id,
         }
-        json = self.request('/droplets/%s/rebuild' % id, method='POST',
+        json = self.request('/droplets/%s/rebuild' % id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -799,7 +799,7 @@ class Client(object):
             message = json.get('message')
             raise DOPException('[%s]: %s' % (status, message))
 
-    def create_domain_record(self, domain_id, record_id, record_type, data,
+    def edit_domain_record(self, domain_id, record_id, record_type, data,
                              name=None, priority=None, port=None, weight=None):
         """
         This method edits an existing domain record.
