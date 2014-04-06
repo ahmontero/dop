@@ -1,3 +1,7 @@
+Version 1.6.b2
+    + Fixed http methods for droplets
+    + Change edit_domain_record method name
+
 Version 1.6.b1
     + Updated code to support full api
     + Improved comments for methods
