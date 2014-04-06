@@ -1,6 +1,7 @@
-Version 1.6.b2
+Version 1.6.b3
     + Fixed http methods for droplets
     + Change edit_domain_record method name
+    + Ability to install with easy_install without error (thanks to Adam PAPAI)
 
 Version 1.6.b1
     + Updated code to support full api

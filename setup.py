@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import dop
-
 try:
     from setuptools import setup
 except ImportError:
@@ -9,7 +7,7 @@ except ImportError:
 
 setup(
     name='dop',
-    version='1.6.b2',
+    version='1.6.b3',
     description="A Python client for the Digital Ocean API",
     long_description=open('README.rst').read() + '\n\n' +
                      open('CHANGES.txt').read(),
