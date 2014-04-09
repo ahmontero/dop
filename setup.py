@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='dop',
-    version='1.6.b3',
+    version='1.6.b4',
     description="A Python client for the Digital Ocean API",
     long_description=open('README.rst').read() + '\n\n' +
                      open('CHANGES.txt').read(),
