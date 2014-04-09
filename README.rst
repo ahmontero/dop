@@ -32,6 +32,32 @@ It is pretty easy to use:
     for region in regions:
         print(region.to_json())
 
+    # Print sizes.
+    sizes = client.sizes()
+    for size in sizes:
+        print(size.to_json())
+
+    # Print public global images.
+    images = client.images()
+    for image in images:
+        print(image.to_json())
+
+    # Print your private images.
+    images = client.images(filter='my_images')
+    for image in images:
+        print(image.to_json())
+
+    # Create a droplet
+    conf = {
+        'name': 'test',
+        'size': {'size_slug': '512MB'},
+        'image': {'image_slug': 'ubuntu-13-04-x64'},
+        'region': {'region_slug': 'nyc1'},
+    }
+    droplet = client.create_droplet(**conf)
+
+To create a droplet, you can use the data fetched from regions, sizes and images methods to fill the dictionary properly.
+
 
 Contribute
 ----------

@@ -102,7 +102,7 @@ class Client(object):
         if image_id:
             params.update({'image_id': image_id})
         else:
-            image_slug = size.get('image_slug')
+            image_slug = image.get('image_slug')
             if image_slug:
                 params.update({'image_slug': image_slug})
             else:
@@ -110,10 +110,10 @@ class Client(object):
                 raise DOPException(msg)
 
         region_id = region.get('region_id')
-        if image_id:
+        if region_id:
             params.update({'region_id': region_id})
         else:
-            region_slug = size.get('region_slug')
+            region_slug = region.get('region_slug')
             if region_slug:
                 params.update({'region_slug': region_slug})
             else:
@@ -441,7 +441,7 @@ class Client(object):
             message = json.get('message')
             raise DOPException('[%s]: %s' % (status, message))
 
-    def images(self, filter='my_images'):
+    def images(self, filter='global'):
         """
         This method returns all the available images that can be accessed by
         your client ID. You will have access to all public images by default,
