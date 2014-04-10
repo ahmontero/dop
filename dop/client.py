@@ -82,6 +82,11 @@ class Client(object):
         """
         if not name:
             raise DOPException('name is required to create a droplet!')
+        if not size:
+            raise DOPException('size is required to create a droplet!')
+        if not image:
+            raise DOPException('image is required to create a droplet!')
+            
         params = dict(name=name, virtio=virtio, private_networking=private_networking,
                       backups_enabled=backups_enabled)
         if ssh_key_ids:
