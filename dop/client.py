@@ -304,7 +304,7 @@ class Client(object):
         if not droplet_id:
             raise DOPException('droplet_id is required to snapshot a droplet!')
         params = {'name': name}
-        json = self.request('/droplets/%s/snapshot' % id, method='GET',
+        json = self.request('/droplets/%s/snapshot' % droplet_id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -333,7 +333,7 @@ class Client(object):
         if not image_id:
             raise DOPException('image_id is required to rebuild a droplet!')
         params = {'image_id': image_id}
-        json = self.request('/droplets/%s/restore' % id, method='GET',
+        json = self.request('/droplets/%s/restore' % droplet_id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -364,7 +364,7 @@ class Client(object):
         params = {
             'image_id': image_id,
         }
-        json = self.request('/droplets/%s/rebuild' % id, method='GET',
+        json = self.request('/droplets/%s/rebuild' % droplet_id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -393,7 +393,7 @@ class Client(object):
         if not name:
             raise DOPException('name is required to rebuild a droplet!')
         params = {'name': name}
-        json = self.request('/droplets/%s/rename' % id, method='GET',
+        json = self.request('/droplets/%s/rename' % droplet_id, method='GET',
                             params=params)
         status = json.get('status')
         if status == 'OK':
@@ -572,7 +572,7 @@ class Client(object):
                 String, the actual public SSH key.
         """
         params = {'name': name, 'ssh_pub_key': ssh_pub_key}
-        json = self.request('/ssh_keys/new' % id, method='GET', params=params)
+        json = self.request('/ssh_keys/new', method='GET', params=params)
         status = json.get('status')
         if status == 'OK':
             ssh_key_json = json.get('ssh_key')
