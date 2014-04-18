@@ -1,3 +1,10 @@
+Version 1.6.b5
+    + Fix some wrong variable names thanks to wummel (http://github.com/wummel)
+
+Version 1.6.b4
+    + Fixed droplet creation bug
+    + Improved docs
+
 Version 1.6.b3
     + Fixed http methods for droplets
     + Change edit_domain_record method name
