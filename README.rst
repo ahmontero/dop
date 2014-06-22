@@ -1,6 +1,12 @@
 DOP: Digital Ocean API Python Wrapper
 =====================================
 
+    .. image:: https://badge.fury.io/py/dop.png 
+        :target: http://badge.fury.io/py/dop
+    
+    .. image:: https://pypip.in/d/dop/badge.png 
+        :target: http://badge.fury.io/py/dop
+
 DOP is a MIT licensed Python wrapper for Digital Ocean's API.
 
 
@@ -19,9 +25,8 @@ To install dop, simply: ::
 
 Example
 -------
-It is pretty easy to use:
+It is pretty easy to use: ::
 
-.. code-block:: python
 
     from dop.client import Client
 
@@ -60,13 +65,11 @@ To create a droplet, you can use the data fetched from regions, sizes and images
 
 
 How to initialise with client_id and api_key stored in creds file
--------
-It is pretty easy to use:
-
-.. code-block:: python
+-----------------------------------------------------------------
+Easy: ::
 
     from dop.client import Client
-
+    
     client = Client.fromCredsFile('/home/user/.do.creds')
 
 
