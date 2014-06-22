@@ -10,6 +10,7 @@ This module implements the Digital Ocean API.
 """
 
 from .models import Domain, Droplet, Event, Image, Record, Region, Size, SSHKey
+from .credentials import Credentials
 
 import requests
 from pkg_resources import get_distribution
@@ -27,6 +28,19 @@ class Client(object):
         self.host = host
         self.port = port
         self.secure = secure
+
+    @staticmethod
+    def fromCredsFile(filename, host=API_HOST, port=API_PORT,
+                 secure=True):
+        creds = Credentials(filename)
+        if creds.available():
+            creds.load()
+        else:
+            creds.input()
+            creds.save()
+        (client_id, api_key) = creds.get()
+        return Client(client_id, api_key, host, port, secure)
+
 
     def droplets(self):
         """

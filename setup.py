@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='dop',
-    version='1.6.b5',
+    version='1.6.b6',
     description="A Python client for the Digital Ocean API",
     long_description=open('README.rst').read() + '\n\n' +
                      open('CHANGES.txt').read(),
@@ -18,7 +18,7 @@ setup(
     package_data={'': ['LICENSE.txt']},
     package_dir={'dop': 'dop'},
     include_package_data=True,
-    install_requires=["requests >= 1.0.4"],
+    install_requires=["requests >= 1.0.4", "pycrypto >= 2.6.1"],
     license=open('LICENSE.txt').read(),
     zip_safe=False,
     classifiers=(

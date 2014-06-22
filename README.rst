@@ -59,6 +59,18 @@ It is pretty easy to use:
 To create a droplet, you can use the data fetched from regions, sizes and images methods to fill the dictionary properly.
 
 
+Example of initialisation with client_id and api_key stored in creds file
+-------
+It is pretty easy to use:
+
+.. code-block:: python
+
+    from dop.client import Client
+
+    client = Client.fromCredsFile('/home/user/.do.creds')
+
+
+
 Contribute
 ----------
 Pull requests and improvements are welcome.
