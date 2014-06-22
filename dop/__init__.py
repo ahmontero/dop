@@ -10,7 +10,7 @@ Basic usage:
    >>> c = Client('client_id', 'api_key')
    >>> regions = client.regions()
    >>> for region in regions:
-   >>>     print region.to_json()
+   >>>     print(region.to_json())
    {'id': 1, 'name': u'New York 1'}
    {'id': 2, 'name': u'Amsterdam 1'}
 

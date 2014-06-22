@@ -9,6 +9,7 @@ Contributors
 ````````````
 Alphabetical order:
 
+- 2r2w <https://github.com/2r2w>
 - alex-sf <https://github.com/alex-sf>
 - cleberjsantos <https://github.com/cleberjsantos>
 - covertgeek <https://github.com/covertgeek>
@@ -22,7 +23,6 @@ Alphabetical order:
 - samuelclay <https://github.com/samuelclay>
 - volkhin <https://github.com/volkhin>
 - Yulli <https://github.com/Yulli>
-
 
 
 
