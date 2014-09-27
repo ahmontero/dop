@@ -63,6 +63,22 @@ It is pretty easy to use: ::
 
 To create a droplet, you can use the data fetched from regions, sizes and images methods to fill the dictionary properly.
 
+How to store your client_id and api_key in a creds file
+-------------------------------------------------------
+Easy: ::
+
+    >>> from dop.credentials import Credentials
+    >>> creds = Credentials('.do.creds')
+    >>> creds.input()
+    Every API call needs Client Id and API Key.
+    This credentials could be obtained here: https://cloud.digitalocean.com/api_access
+    
+    Please enter DO Client Id: '7c61484b9fb5e9c86fdb6e677b4cb5b6'
+    Please enter DO API Key: 'a2a307a5eac3df64db907c26aa443a4d'
+    >>> creds.save()
+    ("You're going to store Digital Ocean credentials in file: ", '.do.creds')
+    Please enter encryption password: 
+    >>> ^D
 
 How to initialise with client_id and api_key stored in creds file
 -----------------------------------------------------------------
