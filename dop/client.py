@@ -926,9 +926,9 @@ class Client(object):
         url = self.get_url(target)
         if method == 'POST':
             headers['Content-Type'] = "application/json"
-            response = requests.post(url, headers=headers, params=params)
+            response = requests.post(url, headers=headers, params=params, timeout=30)
         else:
-            response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=params, timeout=30)
         if response.status_code == 200:
             response_json = response.json()
             if response_json:
